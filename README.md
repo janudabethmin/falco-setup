@@ -27,6 +27,11 @@ Portforwarding Falco Sidekick UI
 kubectl port-forward -n falco svc/falco-falcosidekick-ui  2802:2802
 ```
 
+Creating a Pod for testing
+```sh
+kubectl apply -f https://raw.githubusercontent.com/janudabethmin/falco-setup/refs/heads/main/ubuntu-pod.yaml
+```
+
 Installing Falco Talon
 ```sh
 helm install falco-talon falcosecurity/falco-talon --namespace falco
