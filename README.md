@@ -32,6 +32,21 @@ Creating a Pod for testing
 kubectl apply -f https://raw.githubusercontent.com/janudabethmin/falco-setup/refs/heads/main/ubuntu-pod.yaml
 ```
 
+Get into the terminal of the Pod
+```sh
+kubectl exec -it $(kubectl get pods -l app=ubuntu -o jsonpath='{.items[0].metadata.name}') -- /bin/bash
+```
+
+Can keep this running to check whether a specific rule is triggered
+```sh
+kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Warning Grep private keys'
+```
+
+Running a command that will trigger some rules
+```sh
+find /root -name "id_rsa"
+```
+
 Installing Falco Talon
 ```sh
 helm install falco-talon falcosecurity/falco-talon --namespace falco
