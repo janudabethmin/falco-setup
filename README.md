@@ -5,6 +5,8 @@ helm repo add falcosecurity https://falcosecurity.github.io/charts
 helm repo update falcosecurity
 ```
 
+Visit [Falco Rules Explorer](https://thomas.labarussias.fr/falco-rules-explorer/) for detailed view of falco rules.
+
 Installing Falco and Falco Sidekick with custom rules
 ```sh
 helm install falco falcosecurity/falco --namespace falco \
