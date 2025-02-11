@@ -61,7 +61,10 @@ Create a new namespace for Atomic Red Team
 kubectl create namespace atomic-red
 ```
 
-
+Deploying Atomic Red to the cluster
+```sh
+kubectl apply -f https://raw.githubusercontent.com/janudabethmin/falco-setup/refs/heads/main/atomic-red.yaml
+```
 
 ---
 # Setting Up Falco Talon
