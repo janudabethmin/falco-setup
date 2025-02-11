@@ -60,23 +60,29 @@ customRules:
     - macro: scripts_in_or
       condition: (proc.args endswith "/wb.sh" or proc.args endswith "/ldr.sh" or proc.args endswith "aktualisieren.sh" or proc.args endswith "creds.sh" or proc.args endswith "cronb.sh" or proc.args endswith "abah1.sh" or proc.args endswith "/huh.sh" or proc.args endswith "ohshit.sh" or proc.args endswith "/mxr.sh")
 
-    # Disabling noissy Falco rules
-    - rule: Drop and execute new binary in container
-      enabled: false
+    # # Disabling noissy Falco rules
+    # - rule: Drop and execute new binary in container
+    #   enabled: replace
+    #   value: false
 
-    - rule: Change thread namespace
-      enabled: false
+    # - rule: Change thread namespace
+    #   enabled: replace
+    #   value: false
 
-    - rule: BPF Program Not Profiled
-      enabled: false
+    # - rule: BPF Program Not Profiled
+    #   enabled: replace
+    #   value: false
 
-    - rule: Write below root
-      enabled: false
+    # - rule: Write below root
+    #   enabled: replace
+    #   value: false
 
-    # Enabling rules that are disabled by default
-    - rule: Container Run as Root User
-      enabled: true
-      tags: [maturity_sandbox, owasp_k8s_T10, K01.01, insecure_workload, mitre_execution, T1610]
+    # # Enabling rules that are disabled by default
+    # - rule: Container Run as Root User
+    #   enabled: replace
+    #   value: true
+    #   tags: [maturity_sandbox, owasp_k8s_T10, K01.01, insecure_workload, mitre_execution, T1610]
 
-    - rule: Detect outbound connections to common miner pool ports
-      enabled: true
+    # - rule: Detect outbound connections to common miner pool ports
+    #   enabled: replace
+    #   value: true

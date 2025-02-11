@@ -5,12 +5,7 @@ helm repo add falcosecurity https://falcosecurity.github.io/charts
 helm repo update falcosecurity
 ```
 
-Installing Falco Talon
-```sh
-helm install falco-talon falcosecurity/falco-talon --namespace falco
-```
-
-Installing Falco and Falco Sidekick
+Installing Falco and Falco Sidekick with custom rules
 ```sh
 helm install falco falcosecurity/falco --namespace falco \
   --create-namespace \
@@ -18,6 +13,21 @@ helm install falco falcosecurity/falco --namespace falco \
   --set falcosidekick.enabled=true \
   --set falcosidekick.webui.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
-  --set falcosidekick.config.webhook.address=http://falco-talon:2803
+  --set falcosidekick.config.webhook.address=http://falco-talon:2803 \
   -f custom-rules.yaml
+```
+
+Watching the logs of Falco
+```sh
+kubectl logs -n falco -c falco -f -l app.kubernetes.io/name=falco
+```
+
+
+
+
+
+
+Installing Falco Talon
+```sh
+helm install falco-talon falcosecurity/falco-talon --namespace falco
 ```
