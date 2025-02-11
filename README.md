@@ -1,3 +1,5 @@
+# Intial Setup of Falco and Falco Sidekick
+
 Adding Falco helm charts
 ```sh
 kubectl create namespace falco
@@ -50,6 +52,12 @@ Running a command that will trigger some rules
 ```sh
 find /root -name "id_rsa"
 ```
+---
+
+# Installing Atomic Red Team for Threat Simulation
+
+---
+# Setting Up Falco Talon
 
 Installing Falco Talon
 ```sh
