@@ -54,7 +54,14 @@ find /root -name "id_rsa"
 ```
 ---
 
-# Installing Atomic Red Team for Threat Simulation
+# Installing Atomic Red for Threat Simulation
+
+Create a new namespace for Atomic Red Team
+```sh
+kubectl create namespace atomic-red
+```
+
+
 
 ---
 # Setting Up Falco Talon
