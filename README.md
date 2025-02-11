@@ -31,3 +31,4 @@ Installing Falco Talon
 ```sh
 helm install falco-talon falcosecurity/falco-talon --namespace falco
 ```
+
