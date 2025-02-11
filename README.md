@@ -22,10 +22,10 @@ Watching the logs of Falco
 kubectl logs -n falco -c falco -f -l app.kubernetes.io/name=falco
 ```
 
-
-
-
-
+Portforwarding Falco Sidekick UI
+```sh
+kubectl port-forward -n falco svc/falco-falcosidekick-ui  2802:2802
+```
 
 Installing Falco Talon
 ```sh
