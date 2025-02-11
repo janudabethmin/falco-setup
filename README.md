@@ -17,5 +17,6 @@ helm install falco falcosecurity/falco --namespace falco \
   --set tty=true \
   --set falcosidekick.enabled=true \
   --set falcosidekick.webui.enabled=true \
+  --set falcosidekick.webui.redis.storageEnabled=false \
   --set falcosidekick.config.webhook.address=http://falco-talon:2803
 ```
