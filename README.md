@@ -28,6 +28,8 @@ Portforwarding Falco Sidekick UI
 ```sh
 kubectl port-forward -n falco svc/falco-falcosidekick-ui  2802:2802
 ```
+> [!NOTE]
+> Default username and password both for Falco Sidekick UI is `admin`
 
 Creating a Pod for testing
 ```sh
