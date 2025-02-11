@@ -66,6 +66,20 @@ Deploying Atomic Red to the cluster
 kubectl apply -f https://raw.githubusercontent.com/janudabethmin/falco-setup/refs/heads/main/atomic-red.yaml
 ```
 
+Getting into the Atomic Red's terminal
+```sh
+kubectl exec -it -n atomic-red deploy/atomicred -- bash
+```
+
+We need to use PowerShell to run the Atomic Red's commands because it only supports Windows.
+```sh
+pwsh
+```
+Importing Atomic Red module
+```sh
+Import-Module "~/AtomicRedTeam/invoke-atomicredteam/Invoke-AtomicRedTeam.psd1" -Force
+```
+
 ---
 # Setting Up Falco Talon
 
