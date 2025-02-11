@@ -7,7 +7,7 @@ helm repo update falcosecurity
 
 Installing Falco Talon
 ```sh
-helm install falco falcosecurity/falco --namespace falco
+helm install falco-talon falcosecurity/falco-talon --namespace falco
 ```
 
 Installing Falco and Falco Sidekick
