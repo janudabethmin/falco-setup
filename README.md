@@ -79,6 +79,18 @@ Importing Atomic Red module
 ```sh
 Import-Module "~/AtomicRedTeam/invoke-atomicredteam/Invoke-AtomicRedTeam.psd1" -Force
 ```
+Getting details of a specific atomic red command
+```sh
+Invoke-AtomicTest T1070.004 -ShowDetails
+```
+Check the prerequisites for a specific atomic red command
+```sh
+Invoke-AtomicTest T1070.004 -GetPreReqs
+```
+Running a specific atomic red command
+```sh
+Invoke-AtomicTest T1070.004
+```
 
 ---
 # Setting Up Falco Talon
@@ -87,4 +99,5 @@ Installing Falco Talon
 ```sh
 helm install falco-talon falcosecurity/falco-talon --namespace falco
 ```
+
 
