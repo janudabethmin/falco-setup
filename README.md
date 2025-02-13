@@ -9,7 +9,17 @@ helm repo update falcosecurity
 
 Visit [Falco Rules Explorer](https://thomas.labarussias.fr/falco-rules-explorer/) for detailed view of falco rules.
 
-Installing Falco and Falco Sidekick with custom rules
+Installing Falco and Falco Sidekick
+```sh
+helm install falco falcosecurity/falco --namespace falco \
+  --create-namespace \
+  --set tty=true \
+  --set falcosidekick.enabled=true \
+  --set falcosidekick.webui.enabled=true \
+  --set falcosidekick.webui.redis.storageEnabled=false \
+  --set falcosidekick.config.webhook.address=http://falco-talon:2803 
+```
+Add custom falco rules to the initial Falco installation
 ```sh
 helm install falco falcosecurity/falco --namespace falco \
   --create-namespace \
@@ -18,6 +28,18 @@ helm install falco falcosecurity/falco --namespace falco \
   --set falcosidekick.webui.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
   --set falcosidekick.config.webhook.address=http://falco-talon:2803 \
+  -f custom-rules.yaml
+```
+
+Add custom falco rules to the existing Falco installation
+```sh
+helm upgrade falco falcosecurity/falco --namespace falco \
+  --set tty=true \
+  --set falcosidekick.enabled=true \
+  --set falcosidekick.webui.enabled=true \
+  --set falcosidekick.webui.redis.storageEnabled=false \
+  --set falcosidekick.config.webhook.address=http://falco-talon:2803 \
+  --reuse-values \
   -f custom-rules.yaml
 ```
 
