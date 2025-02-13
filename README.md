@@ -130,10 +130,14 @@ Invoke-AtomicTest T1070.004
 | T1014 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco``` | ```grep 'Linux Kernel Module injection from container detected'` | `Invoke-AtomicTest T1014` | Kernel Module Based Rootkit | Yes |
 | T1037.004 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco``` | ```grep 'Potentially malicious Python script'``` | ```Invoke-AtomicTest T1037.004``` | Boot Initialization - RC Scripts | No |
 
+> [!IMPORTANT]
+> We have added the custom rule for the T1070.004 attack to the custom-rules.yaml file. Use the commands in the previous section to add the custom rules to Falco.
+
 ---
+
 # Setting Up Falco Talon
 
-Installing Falco Talon
+### Installing Falco Talon
 ```sh
 helm install falco-talon falcosecurity/falco-talon --namespace falco
 ```
