@@ -76,19 +76,19 @@ We need to use PowerShell to run the Atomic Red's commands because it only suppo
 pwsh
 ```
 Importing Atomic Red module
-```sh
+```pwsh
 Import-Module "~/AtomicRedTeam/invoke-atomicredteam/Invoke-AtomicRedTeam.psd1" -Force
 ```
 Getting details of a specific atomic red command
-```sh
+```pwsh
 Invoke-AtomicTest T1070.004 -ShowDetails
 ```
 Check the prerequisites for a specific atomic red command
-```sh
+```pwsh
 Invoke-AtomicTest T1070.004 -GetPreReqs
 ```
 Running a specific atomic red command
-```sh
+```pwsh
 Invoke-AtomicTest T1070.004
 ```
 
