@@ -19,6 +19,7 @@ helm install falco falcosecurity/falco --namespace falco \
   --set falcosidekick.webui.redis.storageEnabled=false \
   --set falcosidekick.config.webhook.address=http://falco-talon:2803 
 ```
+
 Adding custom falco rules to the initial Falco installation
 ```sh
 helm install falco falcosecurity/falco --namespace falco \
@@ -42,6 +43,9 @@ helm upgrade falco falcosecurity/falco --namespace falco \
   --reuse-values \
   -f custom-rules.yaml
 ```
+
+> [!IMPORTANT]
+> The custom rule that we are adding here is for a attomic red test that will not be identified by Falco default rules. Will be described in the next section.
 
 Watching the logs of Falco
 ```sh
@@ -114,6 +118,7 @@ Running a specific atomic red command
 Invoke-AtomicTest T1070.004
 ```
 
+Tables of attomic red attacks that can be used to test Falco rules
 ---
 # Setting Up Falco Talon
 
