@@ -120,15 +120,15 @@ Invoke-AtomicTest T1070.004
 
 ## Tables of Atomic Red Team Attacks That Can Be Used to Test Falco Rules
 
-| Attack    | Command to View Logs | Command to Execute Attack | Description | Identified by Default Falco Rules? |
+| Attack    | Command to View Logs | Grep the specific logs | Command to Execute Attack | Description | Identified by Default Falco Rules? |
 |-----------|----------------------|---------------------------|-------------|------------------------------------|
-| T1070.004 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Bulk data has been removed from disk'``` | ```Invoke-AtomicTest T1070.004``` | Bulk file deletion | Yes |
-| T1556.003 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Sensitive file opened for reading by non-trusted program'``` | ```Invoke-AtomicTest T1556.003``` | Modify Authentication Process | Yes |
-| T1036.005 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Executing binary not part of base'``` | ```Invoke-AtomicTest T1036.005``` | Masquerading: Match Legitimate Name or Location | Yes |
-| T1070.002 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Log files were tampered'``` | ```Invoke-AtomicTest T1070.002``` | Indicator Removal on Host | Yes |
-| T1070.003 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Shell history had been deleted or renamed'``` | ```Invoke-AtomicTest T1070.003``` | Clear Command History | Yes |
-| T1014 | `kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Linux Kernel Module injection from container detected'` | `Invoke-AtomicTest T1014` | Kernel Module Based Rootkit | Yes |
-| T1037.004 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Potentially malicious Python script'``` | ```Invoke-AtomicTest T1037.004``` | Boot Initialization - RC Scripts | No |
+| T1070.004 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco``` | ```grep 'Bulk data has been removed from disk'``` | ```Invoke-AtomicTest T1070.004``` | Bulk file deletion | Yes |
+| T1556.003 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco``` | ```grep 'Sensitive file opened for reading by non-trusted program'``` | ```Invoke-AtomicTest T1556.003``` | Modify Authentication Process | Yes |
+| T1036.005 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco``` | ```grep 'Executing binary not part of base'``` | ```Invoke-AtomicTest T1036.005``` | Masquerading: Match Legitimate Name or Location | Yes |
+| T1070.002 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco``` | ```grep 'Log files were tampered'``` | ```Invoke-AtomicTest T1070.002``` | Indicator Removal on Host | Yes |
+| T1070.003 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco``` | ```grep 'Shell history had been deleted or renamed'``` | ```Invoke-AtomicTest T1070.003``` | Clear Command History | Yes |
+| T1014 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco``` | ```grep 'Linux Kernel Module injection from container detected'` | `Invoke-AtomicTest T1014` | Kernel Module Based Rootkit | Yes |
+| T1037.004 | ```kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco``` | ```grep 'Potentially malicious Python script'``` | ```Invoke-AtomicTest T1037.004``` | Boot Initialization - RC Scripts | No |
 
 ---
 # Setting Up Falco Talon
