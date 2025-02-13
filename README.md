@@ -1,6 +1,6 @@
 # Intial Setup of Falco and Falco Sidekick
 
-Adding Falco helm charts
+### Adding Falco helm charts
 ```sh
 kubectl create namespace falco
 helm repo add falcosecurity https://falcosecurity.github.io/charts
@@ -9,7 +9,7 @@ helm repo update falcosecurity
 
 Visit [Falco Rules Explorer](https://thomas.labarussias.fr/falco-rules-explorer/) for detailed view of falco rules.
 
-Installing Falco and Falco Sidekick
+### Installing Falco and Falco Sidekick
 ```sh
 helm install falco falcosecurity/falco --namespace falco \
   --create-namespace \
@@ -20,7 +20,7 @@ helm install falco falcosecurity/falco --namespace falco \
   --set falcosidekick.config.webhook.address=http://falco-talon:2803 
 ```
 
-Adding custom falco rules to the initial Falco installation
+### Adding custom falco rules to the initial Falco installation
 ```sh
 helm install falco falcosecurity/falco --namespace falco \
   --create-namespace \
@@ -32,7 +32,7 @@ helm install falco falcosecurity/falco --namespace falco \
   -f custom-rules.yaml
 ```
 
-Adding custom falco rules to the existing Falco installation
+### Adding custom falco rules to the existing Falco installation
 ```sh
 helm upgrade falco falcosecurity/falco --namespace falco \
   --set tty=true \
@@ -47,34 +47,34 @@ helm upgrade falco falcosecurity/falco --namespace falco \
 > [!IMPORTANT]
 > The custom rule that we are adding here is for a attomic red test that will not be identified by Falco default rules. Will be described in the next section.
 
-Watching the logs of Falco
+### Watching the logs of Falco
 ```sh
 kubectl logs -n falco -c falco -f -l app.kubernetes.io/name=falco
 ```
 
-Portforwarding Falco Sidekick UI
+### Portforwarding Falco Sidekick UI
 ```sh
 kubectl port-forward -n falco svc/falco-falcosidekick-ui  2802:2802
 ```
 > [!NOTE]
 > Default username and password both for Falco Sidekick UI is `admin`
 
-Creating a Pod for testing
+### Creating a Pod for testing
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/janudabethmin/falco-setup/refs/heads/main/ubuntu-pod.yaml
 ```
 
-Get into the terminal of the Pod
+### Get into the terminal of the Pod
 ```sh
 kubectl exec -it $(kubectl get pods -l app=ubuntu -o jsonpath='{.items[0].metadata.name}') -- /bin/bash
 ```
 
-Can keep this running to check whether a specific rule is triggered
+### Can keep this running to check whether a specific rule is triggered
 ```sh
 kubectl logs -f --tail=0 -n falco -c falco -l app.kubernetes.io/name=falco | grep 'Warning Grep private keys'
 ```
 
-Running a command that will trigger some rules
+### Running a command that will trigger some rules
 ```sh
 find /root -name "id_rsa"
 ```
@@ -82,43 +82,43 @@ find /root -name "id_rsa"
 
 # Installing Atomic Red for Threat Simulation
 
-Create a new namespace for Atomic Red Team
+### Create a new namespace for Atomic Red Team
 ```sh
 kubectl create namespace atomic-red
 ```
 
-Deploying Atomic Red to the cluster
+### Deploying Atomic Red to the cluster
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/janudabethmin/falco-setup/refs/heads/main/atomic-red.yaml
 ```
 
-Getting into the Atomic Red's terminal
+### Getting into the Atomic Red's terminal
 ```sh
 kubectl exec -it -n atomic-red deploy/atomicred -- bash
 ```
 
-We need to use PowerShell to run the Atomic Red's commands because it only supports Windows.
+### We need to use PowerShell to run the Atomic Red's commands because it only supports Windows.
 ```sh
 pwsh
 ```
-Importing Atomic Red module
+### Importing Atomic Red module
 ```pwsh
 Import-Module "~/AtomicRedTeam/invoke-atomicredteam/Invoke-AtomicRedTeam.psd1" -Force
 ```
-Getting details of a specific atomic red command
+### Getting details of a specific atomic red command
 ```pwsh
 Invoke-AtomicTest T1070.004 -ShowDetails
 ```
-Check the prerequisites for a specific atomic red command
+### Check the prerequisites for a specific atomic red command
 ```pwsh
 Invoke-AtomicTest T1070.004 -GetPreReqs
 ```
-Running a specific atomic red command
+### Running a specific atomic red command
 ```pwsh
 Invoke-AtomicTest T1070.004
 ```
 
-## Tables of Atomic Red Team Attacks That Can Be Used to Test Falco Rules
+### Tables of Atomic Red Team Attacks That Can Be Used to Test Falco Rules
 
 | Attack    | Command to View Logs | Grep the specific logs using pipes | Command to Execute Attack | Description | Identified by Default Falco Rules? |
 |-----------|----------------------|---------------------------|-------------|------------------------------------|------------------|
