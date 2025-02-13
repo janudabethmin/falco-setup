@@ -19,7 +19,7 @@ helm install falco falcosecurity/falco --namespace falco \
   --set falcosidekick.webui.redis.storageEnabled=false \
   --set falcosidekick.config.webhook.address=http://falco-talon:2803 
 ```
-Add custom falco rules to the initial Falco installation
+Adding custom falco rules to the initial Falco installation
 ```sh
 helm install falco falcosecurity/falco --namespace falco \
   --create-namespace \
@@ -31,7 +31,7 @@ helm install falco falcosecurity/falco --namespace falco \
   -f custom-rules.yaml
 ```
 
-Add custom falco rules to the existing Falco installation
+Adding custom falco rules to the existing Falco installation
 ```sh
 helm upgrade falco falcosecurity/falco --namespace falco \
   --set tty=true \
