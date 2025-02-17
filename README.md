@@ -133,7 +133,7 @@ Invoke-AtomicTest T1070.004
 > [!IMPORTANT]
 > We have added the custom rule for the T1070.004 attack to the custom-rules.yaml file. Use the commands in the previous section to add the custom rules to Falco.
 
-# More commands to try that will trigger alerts
+### More commands to try that will trigger alerts
 
 ```sh
 find /root -name "id_rsa"
