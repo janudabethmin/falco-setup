@@ -173,7 +173,7 @@ wget https://raw.githubusercontent.com/janudabethmin/falco-setup/refs/heads/main
 
 > [!IMPORTANT]
 > Remember to be in the charts/charts/falco-talon directory before running the command below.
-```sh
 
+```sh
 helm upgrade --install falco-talon -n falco --create-namespace .
 ```
