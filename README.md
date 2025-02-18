@@ -196,4 +196,5 @@ kubectl exec -it $(kubectl get pods -l app=ubuntu -o jsonpath='{.items[0].metada
 find /root -name "id_rsa"
 ```
 
-This will add a tag ***suspicious: "true"*** to the Ubuntu Pod as a responce to the detection done by falco, as we wrote in the falco-talon rules. 
+> [!NOTE]
+> This will add a tag ***suspicious: "true"*** to the Ubuntu Pod as a responce to the detection done by falco, as we wrote in the falco-talon rules. 
