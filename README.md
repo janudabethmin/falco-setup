@@ -1,4 +1,38 @@
-# Intial Setup of Falco and Falco Sidekick
+# Setting Up Falco Talon
+
+> [!CAUTION]
+> Falco talon needs to be installed before falco and falco sidekick
+
+### Download Falco Talon chart to local
+```sh
+git clone https://github.com/falcosecurity/charts.git
+```
+
+### Remove the existing default rules and add custom ones
+```sh
+cd charts/charts/falco-talon
+```
+
+```sh
+rm rules.yaml
+```
+
+```sh
+wget https://raw.githubusercontent.com/janudabethmin/falco-setup/refs/heads/main/rules.yaml 
+```
+
+### Install falco talon
+
+> [!IMPORTANT]
+> Remember to be in the charts/charts/falco-talon directory before running the command below.
+
+```sh
+helm upgrade --install falco-talon -n falco --create-namespace .
+```
+
+---
+
+# Setup of Falco and Falco Sidekick
 
 ### Adding Falco helm charts
 ```sh
@@ -29,6 +63,7 @@ helm install falco falcosecurity/falco --namespace falco \
   --set falcosidekick.webui.enabled=true \
   --set falcosidekick.webui.redis.storageEnabled=false \
   --set falcosidekick.config.webhook.address=http://falco-talon:2803 \
+
   -f custom-rules.yaml
 ```
 
@@ -149,31 +184,16 @@ grep "aws_secret_access_key" /etc/shadow
 
 ---
 
-# Setting Up Falco Talon
+# Testing Falco Talon
 
-### Download Falco Talon chart to local
+### Get into the terminal of the Ubuntu Pod created before
 ```sh
-git clone https://github.com/falcosecurity/charts.git
+kubectl exec -it $(kubectl get pods -l app=ubuntu -o jsonpath='{.items[0].metadata.name}') -- /bin/bash
 ```
 
-### Remove the existing default rules and add custom ones
+### Running a command
 ```sh
-cd charts/charts/falco-talon
+find /root -name "id_rsa"
 ```
 
-```sh
-rm rules.yaml
-```
-
-```sh
-wget https://raw.githubusercontent.com/janudabethmin/falco-setup/refs/heads/main/rules.yaml 
-```
-
-### Install falco talon
-
-> [!IMPORTANT]
-> Remember to be in the charts/charts/falco-talon directory before running the command below.
-
-```sh
-helm upgrade --install falco-talon -n falco --create-namespace .
-```
+> This will add a tag ***suspicious: "true"*** to the Ubuntu Pod as a responce to the detection done by falco, as we wrote in the falco-talon rules. 
