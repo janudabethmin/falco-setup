@@ -151,9 +151,9 @@ grep "aws_secret_access_key" /etc/shadow
 
 # Setting Up Falco Talon
 
-### Installing Falco Talon
+### Download Falco Talon chart to local
 ```sh
-helm install falco-talon falcosecurity/falco-talon --namespace falco
+git clone https://github.com/falcosecurity/charts.git
 ```
 
 
