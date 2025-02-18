@@ -1,7 +1,7 @@
 # Setting Up Falco Talon
 
 > [!CAUTION]
-> Falco talon needs to be installed before falco and falco sidekick
+> **Falco Talon** needs to be installed before **Falco** and **Falco Sidekick**
 
 ### Download Falco Talon chart to local
 ```sh
