@@ -156,4 +156,24 @@ grep "aws_secret_access_key" /etc/shadow
 git clone https://github.com/falcosecurity/charts.git
 ```
 
+### Remove the existing default rules and add custom ones
+```sh
+cd charts/charts/falco-talon
+```
 
+```sh
+rm rules.yaml
+```
+
+```sh
+wget https://raw.githubusercontent.com/janudabethmin/falco-setup/refs/heads/main/rules.yaml 
+```
+
+### Install falco talon
+
+> [!IMPORTANT]
+> Remember to be in the charts/charts/falco-talon directory before running the command below.
+```sh
+
+helm upgrade --install falco-talon -n falco --create-namespace .
+```
