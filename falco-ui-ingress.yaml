@@ -5,6 +5,7 @@ metadata:
   namespace: falco
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx  
   rules:
@@ -18,3 +19,7 @@ spec:
             name: falco-falcosidekick-ui
             port:
               number: 2802
+  tls:
+    - hosts:
+        - falco.sbx.skyu.io
+      secretName: falco-ui-tls
